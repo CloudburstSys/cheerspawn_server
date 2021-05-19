@@ -6,8 +6,13 @@
 // Require dependencies and initiate.
 require("dotenv").config();
 require("./Console.js");
-const io = require('socket.io')(3007);
 const tmi = require('tmi.js');
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 /*const client = new tmi.Client({
 	identity: {
@@ -25,6 +30,10 @@ client.on("cheer", (channel, userstate, message) => {
 	io.emit("donation", userstate.bits);
 });*/
 
+app.get("/", (req,res) => {
+	res.status(200).json({"ok":true});	
+});
+
 io.on("connection", (socket) => {
 	// Connection recieved.
 	console.info("Recieved connection from (hopefully) the plugin.");
@@ -36,4 +45,8 @@ io.on("connection", (socket) => {
 			//client.send(process.env.TARGET, message);
 		}
 	});
+});
+
+server.listen(3007, () => {
+  console.log('listening on *:3007');
 });
