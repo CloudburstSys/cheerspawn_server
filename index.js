@@ -7,11 +7,8 @@
 require("dotenv").config();
 require("./Console.js");
 const tmi = require('tmi.js');
-const http = require('http');
-const server = http.createServer(app);
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ server });
-
+const wss = new WebSocket.Server({ port: 3007 });
 
 /*const client = new tmi.Client({
 	identity: {
@@ -46,8 +43,4 @@ wss.on('connection', function connection(ws) {
 			//client.send(process.env.TARGET, message);
 		}
   	});
-});
-
-server.listen(3007, () => {
-  console.log('listening on *:3007');
 });
