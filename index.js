@@ -7,8 +7,6 @@
 require("dotenv").config();
 require("./Console.js");
 const tmi = require('tmi.js');
-const express = require('express');
-const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const WebSocket = require('ws');
@@ -35,9 +33,6 @@ client.on("cheer", (channel, userstate, message) => {
     	});
 });*/
 
-app.get("/", (req,res) => {
-	res.status(200).json({"ok":true});	
-});
 
 wss.on('connection', function connection(ws) {
 	// Connection recieved.
@@ -53,6 +48,6 @@ wss.on('connection', function connection(ws) {
   	});
 });
 
-server.listen(3005, () => {
-  console.log('listening on *:3005');
+server.listen(3007, () => {
+  console.log('listening on *:3007');
 });
