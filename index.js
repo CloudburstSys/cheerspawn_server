@@ -5,7 +5,7 @@
 
 // Require dependencies and initiate.
 require("dotenv").config();
-//require("./Console.js");
+require("./Console.js");
 const io = require('socket.io')(3007);
 const tmi = require('tmi.js');
 
