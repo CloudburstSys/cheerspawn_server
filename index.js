@@ -42,6 +42,7 @@ app.get("/", (req,res) => {
 wss.on('connection', function connection(ws) {
 	// Connection recieved.
 	console.info("Recieved connection from (hopefully) the plugin.");
+	ws.send("HELO cheers.legodev.com");
 	ws.on('message', function incoming(message) {
     		console.debug("Plugin trying to send message. Verifying that we're allowed to");
 		console.debug("Incoming message content: "+message);
