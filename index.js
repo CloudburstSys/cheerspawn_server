@@ -52,6 +52,6 @@ wss.on('connection', function connection(ws) {
   	});
 });
 
-server.listen(8080, () => {
-  console.log('listening on *:8080');
+server.listen(3005, () => {
+  console.log('listening on *:3005');
 });
